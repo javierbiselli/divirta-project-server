@@ -7,7 +7,7 @@ dotenv.config();
 const port = process.env.PORT || 3000;
 const URL = process.env.DATABASE_URL
 
-mongoose.connect(URL, (error) => {
+const index = mongoose.connect(URL, (error) => {
   if (error) {
     console.log('Database error: ', error);
   } else {
@@ -17,3 +17,5 @@ mongoose.connect(URL, (error) => {
     });
   }
 });
+
+export default index
