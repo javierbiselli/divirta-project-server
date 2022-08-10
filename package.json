@@ -1,0 +1,43 @@
+{
+  "name": "divirta.serv",
+  "version": "1.0.0",
+  "description": "server",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec npm run babel-node -- src/index.js",
+    "babel-node": "babel-node --presets=@babel/preset-env"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javierbiselli/divirta-project-server.git"
+  },
+  "author": "Javier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/javierbiselli/divirta-project-server/issues"
+  },
+  "homepage": "https://github.com/javierbiselli/divirta-project-server#readme",
+  "engines": {
+    "node": "14.x"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.0",
+    "joi": "^17.6.0",
+    "mongodb-memory-server": "^8.5.2",
+    "mongoose": "^6.3.3",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "husky": "^7.0.4",
+    "jest": "^28.1.0"
+  }
+}
