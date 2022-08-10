@@ -1,5 +1,23 @@
 import Salon from '../models/salon'
 
+
+const getSalons = async (req, res) => {
+  try {
+    const salons = await Salon.find({});
+    return res.status(200).json({
+      message: 'Get done',
+      data: salons,
+      error: false,
+    })
+  } catch (error) {
+    return res.status(400).json({
+      message: 'Ocurrio un error, porfavor volve a intentarlo mas tarde',
+      data: error,
+      error: true,
+    });
+  }
+}
+
 const createSalon = async (req, res) => {
     try {
       const salonData = req.body;
@@ -18,25 +36,8 @@ const createSalon = async (req, res) => {
     }
   };
 
-  const getSalons = async (req, res) => {
-    try {
-      const salons = await Salon.find({});
-      return res.status(200).json({
-        message: 'Get done',
-        data: salons,
-        error: false,
-      })
-    } catch (error) {
-      return res.status(400).json({
-        message: 'Ocurrio un error, porfavor volve a intentarlo mas tarde',
-        data: error,
-        error: true,
-      });
-    }
-  }
-
-  const getSalonById = async (req, res) => {
-    try {
+const getSalonById = async (req, res) => {
+  try {
       const salon = await Salon.findById(req.params.id);
       if (salon) {
         return res.status(200).json({
