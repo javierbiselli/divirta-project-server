@@ -1,6 +1,5 @@
 import Salon from '../models/salon'
 
-
 const getSalons = async (req, res) => {
   try {
     const salons = await Salon.find({});

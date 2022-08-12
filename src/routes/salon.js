@@ -1,14 +1,14 @@
 import express from 'express'
-import salonsControllers from '../controllers/salon'
+import salonsController from '../controllers/salon'
 
 const router = express.Router();
 
 router
-.get('/', salonsControllers.getSalons)
-.post('/', salonsControllers.createSalon)
-.get('/:id', salonsControllers.getSalonById)
-.delete('/:id', salonsControllers.deleteSalon)
-.put('/:id', salonsControllers.updateSalon)
+.get('/', salonsController.getSalons)
+.post('/', salonsController.createSalon)
+.get('/:id', salonsController.getSalonById)
+.delete('/:id', salonsController.deleteSalon)
+.put('/:id', salonsController.updateSalon)
 
 
 export default router
