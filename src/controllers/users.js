@@ -1,11 +1,11 @@
-import Salon from '../models/salon'
+import User from '../models/users'
 
-const getSalons = async (req, res) => {
+const getUsers = async (req, res) => {
   try {
-    const salons = await Salon.find({});
+    const users = await User.find({});
     return res.status(200).json({
       message: 'Get done',
-      data: salons,
+      data: users,
       error: false,
     })
   } catch (error) {
@@ -17,38 +17,20 @@ const getSalons = async (req, res) => {
   }
 }
 
-const createSalon = async (req, res) => {
-    try {
-      const salonData = req.body;
-      const newSalon = await Salon.create(salonData);
-      return res.status(201).json({
-        message: 'Salon agregado correctamente!',
-        data: newSalon,
-        error: false,
-      });
-    } catch (error) {
-      return res.status(400).json({
-        message: 'Ocurrio un error, porfavor volve a intentarlo mas tarde',
-        data: error,
-        error: true,
-      });
-    }
-  };
-
-const getSalonById = async (req, res) => {
+const getUserById = async (req, res) => {
   try {
-      const salon = await Salon.findById(req.params.id);
-      if (salon) {
+      const user = await User.findById(req.params.id);
+      if (user) {
         return res.status(200).json({
-          message: 'Salon encontrado',
-          data: salon,
+          message: 'Usuario encontrado',
+          data: user,
           error: false,
         })
       } else {
         return res.status(200).json({
-          message: 'No se pudo encontrar el salon',
+          message: 'No se pudo encontrar el usuario',
           data: undefined,
-          error: true,
+          error: false,
         })
       }
     } catch (error) {
@@ -60,18 +42,18 @@ const getSalonById = async (req, res) => {
     }
   }
 
-  const deleteSalon = async (req, res) => {
+  const deleteUser = async (req, res) => {
     try {
-      const salon = await Salon.findByIdAndDelete(req.params.id);
-      if (!salon) {
+      const user = await User.findByIdAndDelete(req.params.id);
+      if (!user) {
         return res.status(404).json({
-          message: 'Este salon no existe',
+          message: 'Este usuario no existe',
           data: undefined,
           error: true,
         });
       } else {
         return res.status(200).json({
-          message: 'Salon borrado',
+          message: 'Usuario borrado',
           data: undefined,
           error: false,
         })
@@ -85,27 +67,27 @@ const getSalonById = async (req, res) => {
     }
   }
 
-  const updateSalon = async (req, res) => {
+  const updateUser = async (req, res) => {
     try {
-    const salon = await Salon.findByIdAndUpdate(
+    const user = await User.findByIdAndUpdate(
     req.params.id,
     {
       name: req.body.name,
-      rate: req.body.rate,
+      last_name: req.body.last_name,
+      email: req.body.email,
       tel: req.body.tel,
-      address: req.body.address,
     },
     { new: true },);
-    if (!salon) {
+    if (!user) {
       return res.status(404).json({
-        message: 'El salon no existe',
+        message: 'El usuario no existe',
         data: undefined,
         error: true,
       });
     }
     return res.status(200).json({
-      message: 'Salon actualizado',
-      data: salon,
+      message: 'Usuario actualizado',
+      data: user,
       error: false,
     });
     } catch (error) {
@@ -118,5 +100,5 @@ const getSalonById = async (req, res) => {
   }
 
 export default {
-  createSalon, getSalons, deleteSalon, updateSalon, getSalonById
+    getUsers, deleteUser, updateUser, getUserById
 }
