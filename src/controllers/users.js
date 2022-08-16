@@ -1,4 +1,5 @@
 import User from '../models/users'
+import firebaseApp from '../firebase';
 
 const getUsers = async (req, res) => {
   try {
