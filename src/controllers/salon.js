@@ -94,6 +94,9 @@ const getSalonById = async (req, res) => {
       rate: req.body.rate,
       tel: req.body.tel,
       address: req.body.address,
+      images: req.body.images,
+      social: req.body.social,
+      description: req.body.description
     },
     { new: true },);
     if (!salon) {
