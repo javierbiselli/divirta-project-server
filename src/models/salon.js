@@ -13,7 +13,8 @@ const salonSchema = new mongoose.Schema({
         {instagram: { type: String }},
         {whatsapp: { type: String }},
         {email: { type: String }}
-    ]
+    ],
+    description: { type: String, required: true }
 })
 
 export default mongoose.model('Salon', salonSchema);
