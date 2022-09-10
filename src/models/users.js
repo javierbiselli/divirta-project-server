@@ -8,14 +8,14 @@ const userSchema = new mongoose.Schema({
   firebaseUid: { type: String, required: true },
   ownSalons: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Salon",
+      id: { type: mongoose.Schema.Types.ObjectId, ref: "Salon" },
+      addedOn: { type: Date },
     },
   ],
   hiredSalons: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Salon",
+      id: { type: mongoose.Schema.Types.ObjectId, ref: "Salon" },
+      hiredOn: { type: Date },
     },
   ],
 });
