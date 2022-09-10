@@ -10,14 +10,11 @@ const salonSchema = new mongoose.Schema({
   tel: { type: Number, required: true },
   address: { type: String, required: true },
   images: [imagesSchema],
-  social: [
-    {
-      facebook: { type: String },
-      instagram: { type: String },
-      whatsapp: { type: String },
-      email: { type: String },
-    },
-  ],
+  facebook: { type: String },
+  instagram: { type: String },
+  whatsapp: { type: String },
+  email: { type: String },
   description: { type: String, required: true },
+  owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 });
 export default mongoose.model("Salon", salonSchema);
