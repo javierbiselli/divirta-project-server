@@ -3,7 +3,7 @@ import firebaseApp from "../firebase";
 
 const getUsers = async (req, res) => {
   try {
-    const users = await User.find({}).populate("ownSalons", [
+    const users = await User.find({}).populate("ownSalons.id", [
       "name",
       "tel",
       "address",
@@ -30,7 +30,7 @@ const getUsers = async (req, res) => {
 
 const getUserById = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id).populate("ownSalons", [
+    const user = await User.findById(req.params.id).populate("ownSalons.id", [
       "name",
       "tel",
       "address",
