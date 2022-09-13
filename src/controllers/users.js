@@ -163,7 +163,9 @@ const addOwnSalonToUser = async (req, res) => {
     const user = await User.findByIdAndUpdate(
       req.params.id,
       {
-        ownSalons: req.body.ownSalons,
+        $push: {
+          ownSalons: req.body.ownSalons,
+        },
       },
       { new: true }
     );
