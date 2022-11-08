@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const imagesSchema = new mongoose.Schema({
-  url: { type: String, required: true },
+  url: { type: Object, required: true },
 });
 
 const salonSchema = new mongoose.Schema({
