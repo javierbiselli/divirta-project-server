@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   ownSalons: [
     {
       id: { type: mongoose.Schema.Types.ObjectId, ref: "Salon" },
-      addedOn: { type: Date },
+      addedOn: { type: String },
     },
   ],
   hiredSalons: [
