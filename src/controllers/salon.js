@@ -2,10 +2,9 @@ import Salon from "../models/salon";
 
 const getSalons = async (req, res) => {
   try {
-    const salons = await Salon.find({}).populate("owner", [
-      "name",
-      "last_name",
-    ]);
+    const salons = await Salon.find({})
+      .populate("owner", ["name", "last_name"])
+      .populate("comments.commenter", ["name", "last_name"]);
     return res.status(200).json({
       message: "Get done",
       data: salons,
@@ -106,6 +105,7 @@ const updateSalon = async (req, res) => {
         whatsapp: req.body.whatsapp,
         email: req.body.email,
         description: req.body.description,
+        comments: req.body.comments,
       },
       { new: true }
     );
