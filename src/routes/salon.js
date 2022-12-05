@@ -8,6 +8,8 @@ router
   .post("/", salonsController.createSalon)
   .get("/:id", salonsController.getSalonById)
   .delete("/:id", salonsController.deleteSalon)
-  .put("/:id", salonsController.updateSalon);
+  .put("/:id", salonsController.updateSalon)
+  .put("/:id/comments/add", salonsController.addCommentToSalon);
+// .delete("/:id/comments/delete/:id", salonsController.deleteCommentFromSalon);
 
 export default router;

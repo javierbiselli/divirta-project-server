@@ -130,10 +130,71 @@ const updateSalon = async (req, res) => {
   }
 };
 
+const addCommentToSalon = async (req, res) => {
+  try {
+    const salon = await Salon.findByIdAndUpdate(
+      req.params.id,
+      {
+        $push: {
+          comments: req.body.comments,
+        },
+      },
+      { new: true }
+    );
+    if (!salon) {
+      return res.status(404).json({
+        message: "El salon no existe",
+        data: undefined,
+        error: true,
+      });
+    }
+    return res.status(200).json({
+      message: "Comentario agregado a salon correctamente!",
+      data: salon,
+      error: false,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: "Ocurrio un error, porfavor volve a intentarlo mas tarde",
+      data: error,
+      error: true,
+    });
+  }
+};
+
+// const deleteCommentFromSalon = async (req, res) => {
+//   const id = req.params.id;
+//   try {
+//     const comment = await Salon.findOneAndDelete([{ comments: { _id: id } }]);
+//     console.log(comment);
+//     if (!comment) {
+//       return res.status(404).json({
+//         message: "Este comentario no existe",
+//         data: undefined,
+//         error: true,
+//       });
+//     } else {
+//       return res.status(200).json({
+//         message: "Comentario borrado",
+//         data: undefined,
+//         error: false,
+//       });
+//     }
+//   } catch (error) {
+//     return res.status(400).json({
+//       message: "Ocurrio un error, porfavor volve a intentarlo mas tarde",
+//       data: error,
+//       error: true,
+//     });
+//   }
+// };
+
 export default {
   createSalon,
   getSalons,
   deleteSalon,
   updateSalon,
   getSalonById,
+  addCommentToSalon,
+  // deleteCommentFromSalon,
 };
